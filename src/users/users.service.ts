@@ -1,12 +1,23 @@
-import { Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { UsersRepository } from './users.repository';
 import { CreateUserDTO } from './dto/create-user.dto';
+import { BcryptService } from 'src/encryption/bcrypt.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly usersRepo: UsersRepository) {}
+  constructor(
+    private readonly usersRepo: UsersRepository,
+    private readonly encryptService: BcryptService,
+  ) {}
 
   async create(body: CreateUserDTO) {
-    return await this.usersRepo.create(body);
+    const encryptedPassword = this.encryptService.hash(body.password);
+
+    await this.usersRepo.create({
+      ...body,
+      password: encryptedPassword,
+    });
+
+    return HttpStatus.CREATED;
   }
 }
