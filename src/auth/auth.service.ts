@@ -24,6 +24,15 @@ export class AuthService {
     return { accessToken: token };
   }
 
+  async checkToken(token: string) {
+    try {
+      const data = await this.jwtService.verify(token);
+      return data;
+    } catch (e) {
+      throw new UnauthorizedException('invalid token');
+    }
+  }
+
   async register(body) {
     return await this.usersService.create(body);
   }
