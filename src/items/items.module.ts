@@ -1,10 +1,19 @@
 import { Module } from '@nestjs/common';
-import { FindAllService } from './services/find-all-items.service';
-import { FindAllItemsRepository } from './repositories';
-import { FindAllController } from './controller';
-import { FindByCategoryController } from './controller/find-by-category.controller';
-import { FindByCategoryRepository } from './repositories/find-by-category.repository';
-import { FindByCategoryService } from './services/find-by-category.service';
+import {
+  FindAllCategoriesRepository,
+  FindAllItemsRepository,
+  FindByCategoryRepository,
+} from './repositories';
+import {
+  FindAllCategoriesController,
+  FindAllController,
+  FindByCategoryController,
+} from './controller';
+import {
+  FindAllCategoriesService,
+  FindAllService,
+  FindByCategoryService,
+} from './services';
 
 @Module({
   exports: [],
@@ -14,7 +23,13 @@ import { FindByCategoryService } from './services/find-by-category.service';
     FindAllItemsRepository,
     FindByCategoryRepository,
     FindByCategoryService,
+    FindAllCategoriesService,
+    FindAllCategoriesRepository,
   ],
-  controllers: [FindAllController, FindByCategoryController],
+  controllers: [
+    FindAllController,
+    FindByCategoryController,
+    FindAllCategoriesController,
+  ],
 })
 export class ItemsModule {}
