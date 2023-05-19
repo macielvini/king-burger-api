@@ -3,16 +3,19 @@ import {
   FindAllCategoriesRepository,
   FindAllItemsRepository,
   FindByCategoryRepository,
+  FindByIdRepository,
 } from './repositories';
 import {
   FindAllCategoriesController,
   FindAllController,
   FindByCategoryController,
-} from './controller';
+  FindByIdController,
+} from './controllers';
 import {
   FindAllCategoriesService,
   FindAllService,
   FindByCategoryService,
+  FindByIdService,
 } from './services';
 
 @Module({
@@ -25,11 +28,14 @@ import {
     FindByCategoryService,
     FindAllCategoriesService,
     FindAllCategoriesRepository,
+    FindByIdService,
+    FindByIdRepository,
   ],
   controllers: [
     FindAllController,
     FindByCategoryController,
     FindAllCategoriesController,
+    FindByIdController,
   ],
 })
 export class ItemsModule {}
