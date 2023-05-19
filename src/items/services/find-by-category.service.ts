@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { FindByCategoryRepository } from '../repositories/find-by-category.repository';
 
 @Injectable()
@@ -8,6 +8,9 @@ export class FindByCategoryService {
   ) {}
 
   async handle(id: string) {
-    return await this.findByCategoryRepository.handle(id);
+    const data = await this.findByCategoryRepository.handle(id);
+    if (data.length <= 0) throw new NotFoundException('id not found');
+
+    return data;
   }
 }

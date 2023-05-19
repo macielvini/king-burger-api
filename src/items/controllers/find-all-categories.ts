@@ -5,7 +5,7 @@ import { FindAllCategoriesService } from '../services';
 export class FindAllCategoriesController {
   constructor(private readonly service: FindAllCategoriesService) {}
 
-  @Get('category')
+  @Get('categories')
   async handle() {
     return this.service.handle();
   }
