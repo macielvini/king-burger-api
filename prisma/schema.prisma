@@ -20,3 +20,37 @@ model User {
 
   @@map("users")
 }
+
+model Item {
+  id          String       @id @default(uuid())
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @default(now()) @updatedAt @map("updated_at")
+  category    Category     @relation(fields: [categoryId], references: [id])
+  categoryId  String       @map("category_id")
+  name        String       @unique
+  image       String
+  price       Int
+  ingredients Ingredient[]
+
+  @@map("items")
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+  Item      Item[]
+
+  @@map("categories")
+}
+
+model Ingredient {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+  item      Item[]
+
+  @@map("ingredients")
+}
