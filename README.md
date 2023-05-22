@@ -18,7 +18,7 @@ This is a personal project for a fictional fast-food.
 
 
 ## Frontend Repository
-The source code for the backend of this project can be found in [this repository](https://github.com/macielvini/king-burger). Feel free to check it out for more details.
+The source code for the frontend of this project can be found in [this repository](https://github.com/macielvini/king-burger). Feel free to check it out for more details.
 
 ## Installation
 
