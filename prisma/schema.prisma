@@ -11,12 +11,13 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  id        String     @id @default(uuid())
   name      String
-  email     String   @unique
+  email     String     @unique
   password  String
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @default(now()) @updatedAt @map("updated_at")
+  Favorite  Favorite[]
 
   @@map("users")
 }
@@ -31,6 +32,7 @@ model Item {
   image       String
   price       Int
   ingredients Ingredient[]
+  Favorite    Favorite[]
 
   @@map("items")
 }
@@ -53,4 +55,16 @@ model Ingredient {
   item      Item[]
 
   @@map("ingredients")
+}
+
+model Favorite {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+  item      Item     @relation(fields: [itemId], references: [id])
+  itemId    String   @map("item_id")
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @map("user_id")
+
+  @@map("favorites")
 }
