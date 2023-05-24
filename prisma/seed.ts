@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Ingredient, PrismaClient } from '@prisma/client';
+import { Ingredient, Prisma, PrismaClient, User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
@@ -18,6 +18,21 @@ async function main() {
     '\x1b[0m',
   );
   console.log({ ...user, password: 'useruser' });
+
+  const admin: Prisma.UserCreateInput = {
+    email: 'user@admin.com',
+    password: bcrypt.hashSync('useradmin', 12),
+    name: 'User Admin',
+    role: 'ADMIN',
+  };
+  await prisma.user.create({ data: admin });
+  console.log(
+    '\x1b[1m',
+    '\x1b[32m',
+    '✔️ New admin user created successfully 🥳 ',
+    '\x1b[0m',
+  );
+  console.log({ ...admin, password: 'useradmin' });
 
   async function createIngredient(ingredient: string) {
     return await prisma.ingredient.create({ data: { name: ingredient } });
@@ -57,14 +72,14 @@ async function main() {
     data: { name: 'additional' },
   });
 
-  const pao = await createIngredient('pão com gergelim');
+  const pao = await createIngredient('pão');
   const maionese = await createIngredient('maionese');
   const alface = await createIngredient('alface');
   const tomate = await createIngredient('tomate');
   const cebola = await createIngredient('cebola');
   const ketchup = await createIngredient('ketchup');
   const mostarda = await createIngredient('mostarda');
-  const molho = await createIngredient('molho Big King');
+  const molho = await createIngredient('molho King');
   const molhoFurioso = await createIngredient('molho furioso');
   const picles = await createIngredient('picles');
   const queijo = await createIngredient('queijo');

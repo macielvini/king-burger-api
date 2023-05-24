@@ -7,6 +7,8 @@ import {
 import { AuthService } from 'src/auth/auth.service';
 import { UsersService } from 'src/users/users.service';
 
+type JwtPayload = { email: string; sub: string };
+
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(
@@ -23,8 +25,8 @@ export class AuthGuard implements CanActivate {
     const token = authorization?.replace('Bearer ', '');
 
     try {
-      const data = await this.authService.checkToken(token);
-      const user = await this.usersService.findById(data.sub);
+      const payload: JwtPayload = await this.authService.checkToken(token);
+      const user = await this.usersService.findById(payload.sub);
       request.user = user;
     } catch (error) {
       return false;
