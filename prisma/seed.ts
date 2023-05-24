@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Ingredient, PrismaClient } from '@prisma/client';
+import { Ingredient, Prisma, PrismaClient, User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
@@ -19,10 +19,11 @@ async function main() {
   );
   console.log({ ...user, password: 'useruser' });
 
-  const admin = {
+  const admin: Prisma.UserCreateInput = {
     email: 'user@admin.com',
     password: bcrypt.hashSync('useradmin', 12),
     name: 'User Admin',
+    role: 'ADMIN',
   };
   await prisma.user.create({ data: admin });
   console.log(
