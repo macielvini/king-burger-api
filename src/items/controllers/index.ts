@@ -4,3 +4,4 @@ export * from './find-all-categories';
 export * from './find-by-id.controller';
 export * from './create-item.controller';
 export * from './update-item.controller';
+export * from './delete-item.controller';

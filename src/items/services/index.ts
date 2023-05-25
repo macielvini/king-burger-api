@@ -5,3 +5,4 @@ export * from './find-by-id.service';
 export * from './create-item.service';
 export * from './validate-ingredients-by-ids.service';
 export * from './update-item.service';
+export * from './delete-item.service';

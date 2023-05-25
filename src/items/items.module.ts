@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import {
   CreateItemRepository,
+  DeleteItemRepository,
   FindAllCategoriesRepository,
   FindAllItemsRepository,
   FindByCategoryRepository,
@@ -11,6 +12,7 @@ import {
 } from './repositories';
 import {
   CreateItemController,
+  DeleteItemController,
   FindAllCategoriesController,
   FindAllController,
   FindByCategoryController,
@@ -19,6 +21,7 @@ import {
 } from './controllers';
 import {
   CreateItemService,
+  DeleteItemService,
   FindAllCategoriesService,
   FindAllService,
   FindByCategoryService,
@@ -46,6 +49,8 @@ import {
     FindItemByNameRepository,
     UpdateItemService,
     UpdateItemRepository,
+    DeleteItemService,
+    DeleteItemRepository,
   ],
   controllers: [
     FindAllController,
@@ -54,6 +59,7 @@ import {
     FindByIdController,
     CreateItemController,
     UpdateItemController,
+    DeleteItemController,
   ],
 })
 export class ItemsModule {}
