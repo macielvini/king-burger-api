@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { FindIngredientsByIdsRepository } from '../repositories';
 
 @Injectable()
-export class FindIngredientsByIds {
+export class ValidateIngredientsByIdsService {
   constructor(
     private readonly findIngredientsByIdsRepository: FindIngredientsByIdsRepository,
   ) {}
