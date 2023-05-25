@@ -7,6 +7,7 @@ import {
   FindByIdRepository,
   FindIngredientsByIdsRepository,
   FindItemByNameRepository,
+  UpdateItemRepository,
 } from './repositories';
 import {
   CreateItemController,
@@ -14,6 +15,7 @@ import {
   FindAllController,
   FindByCategoryController,
   FindByIdController,
+  UpdateItemController,
 } from './controllers';
 import {
   CreateItemService,
@@ -21,6 +23,7 @@ import {
   FindAllService,
   FindByCategoryService,
   FindByIdService,
+  UpdateItemService,
   ValidateIngredientsByIdsService,
 } from './services';
 
@@ -36,11 +39,13 @@ import {
     FindAllCategoriesRepository,
     FindByIdService,
     FindByIdRepository,
-    CreateItemRepository,
     CreateItemService,
+    CreateItemRepository,
     ValidateIngredientsByIdsService,
     FindIngredientsByIdsRepository,
     FindItemByNameRepository,
+    UpdateItemService,
+    UpdateItemRepository,
   ],
   controllers: [
     FindAllController,
@@ -48,6 +53,7 @@ import {
     FindAllCategoriesController,
     FindByIdController,
     CreateItemController,
+    UpdateItemController,
   ],
 })
 export class ItemsModule {}

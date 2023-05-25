@@ -5,3 +5,4 @@ export * from './find-by-id.repository';
 export * from './create-item.repository';
 export * from './find-ingredients-by-ids.repository';
 export * from './find-item-by-name.repository';
+export * from './update-item.repository';
