@@ -6,6 +6,7 @@ import {
   FindByCategoryRepository,
   FindByIdRepository,
   FindIngredientsByIdsRepository,
+  FindItemByNameRepository,
 } from './repositories';
 import {
   CreateItemController,
@@ -20,7 +21,7 @@ import {
   FindAllService,
   FindByCategoryService,
   FindByIdService,
-  FindIngredientsByIds,
+  ValidateIngredientsByIdsService,
 } from './services';
 
 @Module({
@@ -37,8 +38,9 @@ import {
     FindByIdRepository,
     CreateItemRepository,
     CreateItemService,
-    FindIngredientsByIds,
+    ValidateIngredientsByIdsService,
     FindIngredientsByIdsRepository,
+    FindItemByNameRepository,
   ],
   controllers: [
     FindAllController,
